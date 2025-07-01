@@ -2,8 +2,7 @@
 title: Синяя изолента, зубочистки и чатгпт
 author: Ваше Имя
 email: your-email@example.com
-description: >- # Описание вашего блога. Можно написать в несколько строк.
-  Идеи, мысли, проекты
+description: Идеи, мысли, проекты
 
 # Настройки сборки
 remote_theme: riggraz/no-style-please
@@ -21,7 +20,7 @@ url: "https://rbpp3042.github.io"
 
 # Дополнительные настройки темы
 theme_config:
-  appearance: "auto"
+  appearance: "dark"
   back_home_text: "← Home"
   date_format: "%d.%m.%Y"
   show_description: true
