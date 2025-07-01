@@ -21,7 +21,7 @@ url: "https://rbpp3042.github.io"
 
 # Дополнительные настройки темы
 theme_config:
-  appearance: "auto" # можно изменить на "light" или "dark"
+  appearance: "auto"
   back_home_text: "← Home"
   date_format: "%d.%m.%Y"
   show_description: true

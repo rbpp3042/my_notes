@@ -1,6 +1,5 @@
 ---
-layout: default
-title: Главная
+layout: home
 ---
 
 <div class="home">
