@@ -1,0 +1,16 @@
+entries:
+  - title: информация
+    entries:
+      - title: мой блог на Jekyll
+      - title: github
+        url: https://github.com/rbpp3042/my_notes
+
+  - title: последние посты
+    post_list:
+      limit: 5
+      show_more: true
+      show_more_text: Смотреть все...
+      show_more_url: archive.html
+
+  - title: rss
+    url: feed.xml 

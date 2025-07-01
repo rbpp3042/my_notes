@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "jekyll", "~> 3.9"
-gem "minima", "~> 2.5"
+gem "no-style-please"
 gem "jekyll-feed", "~> 0.12"
 
 # Этот гем содержит все зависимости, которые использует GitHub Pages.
