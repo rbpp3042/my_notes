@@ -218,10 +218,6 @@ GEM
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
     minitest (5.25.4)
-    no-style-please (0.4.7)
-      jekyll (~> 3.9.0)
-      jekyll-feed (~> 0.15.1)
-      jekyll-seo-tag (~> 2.7.1)
     nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
@@ -268,7 +264,7 @@ DEPENDENCIES
   github-pages
   jekyll (~> 3.9)
   jekyll-feed (~> 0.12)
-  no-style-please
+  jekyll-remote-theme
 
 BUNDLED WITH
    1.17.2

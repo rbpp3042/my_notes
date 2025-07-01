@@ -6,10 +6,11 @@ description: >- # Описание вашего блога. Можно напи�
   Здесь я буду делиться своими мыслями, идеями и проектами.
 
 # Настройки сборки
-theme: no-style-please
+remote_theme: riggraz/no-style-please
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-remote-theme
 
 # Структура URL для постов (оптимизировано для Telegram Instant View)
 permalink: /post/:title/
