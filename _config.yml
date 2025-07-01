@@ -1,0 +1,18 @@
+# Настройки сайта
+title: Мой новый блог
+author: Ваше Имя
+email: your-email@example.com
+description: >- # Описание вашего блога. Можно написать в несколько строк.
+  Здесь я буду делиться своими мыслями, идеями и проектами.
+
+# Настройки сборки
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Структура URL для постов (оптимизировано для Telegram Instant View)
+permalink: /post/:title/
+
+# Если ваш блог будет в подпапке, например, https://USERNAME.github.io/BLOG_REPO_NAME/
+# то раскомментируйте и укажите имя репозитория:
+baseurl: "/my_notes" 

@@ -1,0 +1,8 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-metadata
+
+# Файлы ОС
+.DS_Store
+Thumbs.db
