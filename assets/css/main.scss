@@ -1,0 +1,101 @@
+---
+---
+
+/* Стили темы no-style-please */
+body[a="dark"] { filter: invert(1); }
+body[a="dark"] img { filter: invert(1); }
+body[a="dark"] img.ioda { filter: invert(0); }
+body[a="dark"] .emoji { filter: invert(1); }
+body[a="dark"] iframe { filter: invert(1); }
+
+@media (prefers-color-scheme: dark) { 
+  body[a="auto"] { filter: invert(1); }
+  body[a="auto"] img { filter: invert(1); }
+  body[a="auto"] img.ioda { filter: invert(0); }
+  body[a="auto"] .emoji { filter: invert(1); }
+  body[a="auto"] iframe { filter: invert(1); } 
+}
+
+html, body { background: white; }
+html { height: 100%; scroll-behavior: smooth; }
+body { color: black; font-family: monospace; font-size: 16px; line-height: 1.4; margin: 0; min-height: 100%; overflow-wrap: break-word; }
+
+.post-meta { text-align: right; }
+h2, h3, h4, h5, h6 { margin-top: 3rem; }
+hr { margin: 2rem 0; text-align: center; border: 0; }
+hr:before { content: "/////"; }
+hr:after { content: attr(data-content) "/////"; }
+p { margin: 1rem 0; }
+li { margin: 0.4rem 0; }
+*:target { background: yellow; }
+.w { max-width: 640px; margin: 0 auto; padding: 4rem 2rem; }
+
+code { color: white; background: black; }
+div.highlighter-rouge code { display: block; overflow-x: auto; white-space: pre-wrap; padding: 1rem; }
+blockquote { font-style: italic; border: thin solid black; padding: 1rem; }
+blockquote p { margin: 0; }
+img { max-width: 100%; display: block; margin: 0 auto; }
+
+/* АДАПТИВНЫЕ ТАБЛИЦЫ - наше дополнение */
+table { 
+  width: 100%; 
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+th, td { 
+  border: thin solid black; 
+  padding: 0.4rem;
+  text-align: left;
+}
+
+th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tr:hover {
+  background-color: #e9ecef;
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+  table {
+    font-size: 14px;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  th, td {
+    padding: 8px 4px;
+    white-space: nowrap;
+  }
+  
+  th:first-child,
+  td:first-child {
+    white-space: normal;
+    min-width: 120px;
+    position: sticky;
+    left: 0;
+    background: inherit;
+    z-index: 1;
+  }
+  
+  th:first-child {
+    background-color: #f8f9fa;
+  }
+  
+  tr:nth-child(even) td:first-child {
+    background-color: #f8f9fa;
+  }
+  
+  tr:hover td:first-child {
+    background-color: #e9ecef;
+  }
+} 
