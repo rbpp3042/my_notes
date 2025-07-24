@@ -70,6 +70,27 @@ tr:hover {
     -webkit-overflow-scrolling: touch;
     min-width: 600px;
     font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  /* Подсказка */
+  table:before {
+    content: "👆 Нажмите для увеличения";
+    position: absolute;
+    top: -25px;
+    left: 0;
+    font-size: 12px;
+    color: #666;
+    opacity: 0.7;
+  }
+  
+  /* Увеличение по клику */
+  table:active {
+    transform: scale(1.15);
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
   
   .hide-mobile { 
