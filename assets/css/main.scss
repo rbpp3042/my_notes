@@ -65,37 +65,14 @@ tr:hover {
 /* Адаптивные стили для мобильных устройств */
 @media (max-width: 768px) {
   table {
-    font-size: 14px;
     display: block;
     overflow-x: auto;
-    white-space: nowrap;
     -webkit-overflow-scrolling: touch;
+    min-width: 600px;
+    font-size: 14px;
   }
   
-  th, td {
-    padding: 8px 4px;
-    white-space: nowrap;
-  }
-  
-  th:first-child,
-  td:first-child {
-    white-space: normal;
-    min-width: 120px;
-    position: sticky;
-    left: 0;
-    background: inherit;
-    z-index: 1;
-  }
-  
-  th:first-child {
-    background-color: #f8f9fa;
-  }
-  
-  tr:nth-child(even) td:first-child {
-    background-color: #f8f9fa;
-  }
-  
-  tr:hover td:first-child {
-    background-color: #e9ecef;
+  .hide-mobile { 
+    display: none; 
   }
 } 
