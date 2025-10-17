@@ -28,7 +28,7 @@ hr:after { content: attr(data-content) "/////"; }
 p { margin: 1rem 0; }
 li { margin: 0.4rem 0; }
 *:target { background: yellow; }
-.w { max-width: 640px; margin: 0 auto; padding: 4rem 2rem; }
+.w { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
 
 code { color: white; background: black; }
 div.highlighter-rouge code { display: block; overflow-x: auto; white-space: pre-wrap; padding: 1rem; }
@@ -70,4 +70,205 @@ tr:hover {
     -webkit-overflow-scrolling: touch;
     white-space: nowrap;
   }
-} 
+}
+
+/* ===================================
+   СТИЛИ ДЛЯ ЛЕНДИНГА
+   =================================== */
+
+/* Hero section с фото профиля */
+.hero {
+  text-align: left;
+  margin-bottom: 5rem;
+}
+
+/* Двухколоночный layout */
+.two-column-layout {
+  display: grid;
+  grid-template-columns: 5fr 3fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.profile-photo {
+  width: 400px;
+  height: 400px;
+  max-width: 100%;
+  border-radius: 50%;
+  margin: 0 0 2rem;
+  display: block;
+  border: 3px solid black;
+  object-fit: cover;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.hero .tagline {
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+  opacity: 0.7;
+}
+
+/* Акцентный блок (синий) для цитат */
+.accent-block {
+  border-left: 3px solid #2196F3;
+  padding: 1.5rem 0 1.5rem 2rem;
+  margin: 0;
+  font-style: italic;
+  background-color: rgba(33, 150, 243, 0.05);
+}
+
+.accent-block blockquote {
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.accent-block p {
+  margin: 1.5rem 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Секции */
+section {
+  margin-bottom: 5rem;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Список проектов */
+.project-list {
+  list-style: none;
+  padding: 0;
+}
+
+.project-list li {
+  margin: 1.2rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.project-list li:before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+
+.project-list a {
+  color: #2196F3;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.2s;
+}
+
+.project-list a:hover {
+  border-bottom: 1px solid #2196F3;
+}
+
+/* Контакты */
+.contacts {
+  margin-top: 2rem;
+}
+
+.contacts h2 {
+  font-size: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.contacts a {
+  color: #2196F3;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.2s;
+}
+
+.contacts a:hover {
+  border-bottom: 1px solid #2196F3;
+}
+
+/* Footer */
+.footer {
+  margin-top: 6rem;
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+/* Responsive для мобильных */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  section h2 {
+    font-size: 1.5rem;
+  }
+
+  .two-column-layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-column {
+    order: 1;
+  }
+
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    order: 0;
+  }
+
+  .side-column {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .profile-photo {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem;
+  }
+
+  .accent-block {
+    padding: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .accent-block blockquote {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .accent-block p {
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .contacts {
+    margin-top: 2rem;
+  }
+}

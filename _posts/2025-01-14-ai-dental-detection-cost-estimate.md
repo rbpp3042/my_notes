@@ -4,8 +4,8 @@ title: "AI-система для автоматизированной детек
 date: 2025-07-22
 categories: [projects, ai, dental]
 tags: [ml, automl, vertex-ai, roi, estimate]
+published: false
 ---
- 
 
 ## 🎯 Задача и ценность проекта [^1]
 
