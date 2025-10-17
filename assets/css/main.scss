@@ -138,7 +138,15 @@ tr:hover {
   line-height: 1.6;
 }
 
-.accent-block p {
+/* Символы кавычек << >> */
+.quote-symbol {
+  font-size: 1.65rem;
+  color: #2196F3;
+  font-weight: normal;
+}
+
+/* Текст цитат внутри blockquote */
+.accent-block blockquote p {
   margin: 1.5rem 0;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -267,15 +275,9 @@ h3 {
     margin-bottom: 1rem;
   }
 
-  .accent-block blockquote {
-    font-size: 0.76rem;
-    line-height: 1.5;
-  }
-
-  .accent-block p {
-    margin: 0.8rem 0;
-    font-size: 0.76rem;
-    line-height: 1.5;
+  /* Символы кавычек на мобильных */
+  .quote-symbol {
+    font-size: 1.14rem;
   }
 
   .contacts {
