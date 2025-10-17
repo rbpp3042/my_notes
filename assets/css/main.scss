@@ -234,13 +234,13 @@ h3 {
     order: 1;
   }
 
+  /* Убираем обёртку right-column, делая её детей прямыми детьми two-column-layout */
   .right-column {
-    display: flex;
-    flex-direction: column;
-    order: 0;
+    display: contents;
   }
 
   .side-column {
+    order: 0;
     text-align: center;
     margin-bottom: 1rem;
   }
@@ -251,7 +251,9 @@ h3 {
     margin: 0 auto 1rem;
   }
 
+  /* Перемещаем accent-block в самый низ страницы только на мобильных */
   .accent-block {
+    order: 2;
     padding: 0.8rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
