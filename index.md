@@ -9,11 +9,11 @@ title: Yegor Kolosov - AI-agents and automations
 
 # Yegor Kolosov
 
-15 years of entrepreneurship. Launched 10+ businesses: from e-commerce and event agencies to local communities, bars and subscription services.
+15 years of entrepreneurship. Launched 10+ businesses: from e-commerce and event agencies to local communities and bars.
 
-Built automations and AI solutions in my own projects, implemented AI in marketing and sales.
+Built automations and AI solutions in my own projects, using AI in marketing and sales.
 
-Currently focused on consulting and implementing AI in business for non-IT companies.
+Currently focused on consulting, implementing AI in business for non-IT companies and employees training.
 
 ## What I Do
 
@@ -30,7 +30,7 @@ Built businesses as founder:
 - **Event agency** — niche wine and gastronomy events (over 1000 events delivered)
 - **Wine bar** [Moscow Republic](https://www.instagram.com/moscow.republic/)
 - **E-commerce project** selling wine accessories
-- **Café and events** as part of [Lexus Dome](https://www.facebook.com/lexusdome/)
+- **Bistro and events** as part of [Lexus Dome](https://www.facebook.com/lexusdome/)
 - **Also** a boutique travel agency, catering, corporate gifting service
 
 <div class="contacts" markdown="1">
@@ -64,9 +64,9 @@ Telegram: [@egorkolosov](https://t.me/egorkolosov)
 
 > <span class="quote-symbol"><<</span> My projects taught me one thing: business is about people, processes, and economics — not technology. Technology is just a tool for solving real problems.
 
-> When AI appeared, I saw in it not just another tech trend, but a powerful tool for business transformation. At first I applied AI in my own projects, helping employees with their tasks and rolling it out in marketing and sales.
+> When AI appeared, I saw it not as just another tech trend, but as a powerful tool for business transformation. At first I applied AI in my own business, helping employees with their tasks and improving processes in marketing and sales.
 
-> Lately I used this experience to help other businesses implement AI solutions, build agents and automations. <span class="quote-symbol">>></span>
+> Lately I used this experience to help other companies implement AI solutions, build agents and automations. <span class="quote-symbol">>></span>
 
 </div>
 
