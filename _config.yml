@@ -1,31 +1,31 @@
-# Настройки сайта
-title: Егор Колосов
-author: Егор Колосов
+# Site settings
+title: Yegor Kolosov
+author: Yegor Kolosov
 email: kolosov-egor@yandex.ru
-description: Идеи, мысли, проекты
+description: Ideas, thoughts, projects
 
-# Настройки сборки
+# Build settings
 remote_theme: riggraz/no-style-please
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-remote-theme
 
-# Структура URL для постов
+# Post URL structure
 permalink: /post/:title/
 
-# Базовый URL для GitHub Pages
+# GitHub Pages base URL (site: https://rbpp3042.github.io/my_notes)
 baseurl: "/my_notes"
 url: "https://rbpp3042.github.io"
 
-# Дополнительные настройки темы
+# Theme settings
 theme_config:
   appearance: "dark"
   back_home_text: "← Home"
-  date_format: "%d.%m.%Y"
+  date_format: "%Y-%m-%d"
   show_description: true
 
-# Настройки GitHub Pages
+# GitHub Pages
 github: [metadata]
 encoding: UTF-8
 kramdown:
