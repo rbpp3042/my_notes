@@ -12,6 +12,8 @@ html, body {
   margin: 0;
   padding: 0;
   font: 15px ui-monospace, Menlo, Consolas, monospace;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 .wrap { max-width: 820px; margin: 56px auto; padding: 0 28px; }
 
