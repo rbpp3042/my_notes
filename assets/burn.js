@@ -152,6 +152,45 @@
     </div>`;
   }
 
+  function bars14(activity, tz) {
+    const dayTokens = activity.day_active_tokens || {};
+    const todayStr = localToday(tz);
+    const [ty, tm, td] = todayStr.split("-").map(Number);
+    const todayDate = new Date(Date.UTC(ty, tm - 1, td));
+
+    const days = 14;
+    const items = [];
+    for (let i = days - 1; i >= 0; i--) {
+      const d = new Date(todayDate.getTime() - i * 86400000);
+      const key = isoDate(new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate())));
+      const v = Number(dayTokens[key] || 0);
+      items.push({ key, date: d, value: v, isToday: key === todayStr });
+    }
+    const peak = Math.max(...items.map(it => it.value), 1);
+
+    const dowFmt = new Intl.DateTimeFormat("en-US", { timeZone: "UTC", weekday: "short" });
+    const tracks = items.map(it => {
+      const pct = (it.value / peak) * 100;
+      const trackCls = it.isToday ? "bar14-track is-today" : "bar14-track";
+      const title = `${it.key} — ${fmtNum(it.value)} tokens`;
+      return `<div class="bar14-col" title="${title}">
+        <div class="${trackCls}"><div class="bar14-fill" style="height:${pct}%"></div></div>
+      </div>`;
+    }).join("");
+
+    const labels = items.map(it => {
+      const labelCls = it.isToday ? "bar14-label is-today" : "bar14-label";
+      const text = it.isToday ? "today" : dowFmt.format(it.date);
+      return `<div class="${labelCls}">${text}</div>`;
+    }).join("");
+
+    return `<div class="block-bars14">
+      <div class="title">Last 14 days</div>
+      <div class="bars14">${tracks}</div>
+    </div>
+    <div class="bars14-labels">${labels}</div>`;
+  }
+
   // ---- thinking widget animation ----
 
   function initThinkingWidget() {
@@ -249,7 +288,7 @@
       }
     }
     if (data.activity) {
-      parts.push(activityGraph(data.activity, data.streaks, tz, { weeks: 7, count_window: 30 }));
+      parts.push(`<div class="activity-row">${activityGraph(data.activity, data.streaks, tz, { weeks: 7, count_window: 30 })}${bars14(data.activity, tz)}</div>`);
     }
     parts.push(thinkingBlock());
     content.innerHTML = parts.join("");
