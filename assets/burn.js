@@ -76,12 +76,11 @@
     </div>`;
   }
 
-  function computeLevel(c, peak) {
-    if (c <= 0) return 0;
-    const r = c / peak;
-    if (r < 0.25) return 1;
-    if (r < 0.50) return 2;
-    if (r < 0.75) return 3;
+  function quantileLevel(v, q25, q50, q75) {
+    if (v <= 0) return 0;
+    if (v <= q25) return 1;
+    if (v <= q50) return 2;
+    if (v <= q75) return 3;
     return 4;
   }
 
@@ -100,6 +99,7 @@
     const weeks = opts.weeks || 7;
     const countWindow = opts.count_window || 30;
     const day_counts = activity.day_counts || {};
+    const day_tokens = activity.day_active_tokens || {};
 
     // Today and window boundaries (work in ISO strings to avoid TZ pitfalls).
     const todayStr = localToday(tz);
@@ -111,26 +111,32 @@
     const totalDays = weeks * 7;
     const startDate = new Date(endDate.getTime() - (totalDays - 1) * 86400000);
 
-    // Collect values within the visible window for peak.
+    // Per-day active tokens (in + out + cache_write) within the visible window.
     const values = [];
     for (let i = 0; i < totalDays; i++) {
       const d = new Date(startDate.getTime() + i * 86400000);
       const key = isoDate(new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate())));
-      values.push(Number(day_counts[key] || 0));
+      values.push(Number(day_tokens[key] || 0));
     }
-    const peak = Math.max(...values, 1);
 
-    // Build cells.
+    // Quantile thresholds over non-zero days — self-calibrating, so an outlier
+    // peak doesn't squash the rest of the days into a single dim level.
+    const sorted = values.filter(v => v > 0).sort((a, b) => a - b);
+    const qAt = (p) => sorted.length
+      ? sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * p))]
+      : 0;
+    const q25 = qAt(0.25), q50 = qAt(0.50), q75 = qAt(0.75);
+
     const cells = [];
     for (let i = 0; i < totalDays; i++) {
       const d = new Date(startDate.getTime() + i * 86400000);
       const key = isoDate(new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate())));
-      const c = values[i];
-      const lvl = computeLevel(c, peak);
+      const v = values[i];
+      const lvl = quantileLevel(v, q25, q50, q75);
       const cls = ["cell", "lvl-" + lvl];
       if (key === todayStr) cls.push("today");
       else if (key > todayStr) cls.push("future");
-      cells.push(`<div class="${cls.join(" ")}" title="${key} — ${fmtNum(c)} msgs"></div>`);
+      cells.push(`<div class="${cls.join(" ")}" title="${key} — ${fmtK(v)} tokens"></div>`);
     }
 
     // Active-day counter over last N days.
