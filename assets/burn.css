@@ -110,7 +110,9 @@ html, body {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  width: fit-content;
 }
+.block-bars14 .title { text-align: right; }
 .bars14 {
   display: flex;
   gap: 10px;
@@ -163,48 +165,3 @@ html, body {
 .foot a { color: var(--fill); }
 
 .err { color: #ff8080; white-space: pre-wrap; }
-
-@media (max-width: 640px) {
-  .wrap { margin: 14px auto; padding: 0 16px; }
-
-  .big { font-size: 44px; letter-spacing: -1.2px; }
-  .big-sub { margin-top: 6px; font-size: 10px; letter-spacing: 1.8px; }
-  .breakdown { font-size: 10px; margin-top: 10px; line-height: 1.55; }
-  .burn { margin-bottom: 20px; }
-
-  .title { font-size: 13px; margin-bottom: 7px; }
-  .block { margin-bottom: 12px; }
-  .block-activity { margin-top: 18px; }
-
-  .bar { height: 14px; }
-  .row { gap: 10px; }
-  .pct { font-size: 11px; min-width: 54px; }
-  .reset { font-size: 10px; margin-top: 4px; }
-
-  .streaks { font-size: 10px; margin-bottom: 6px; }
-  .agraph {
-    grid-template-rows: repeat(7, 9px);
-    grid-auto-columns: 9px;
-    gap: 2px;
-  }
-  .cell.today { outline-width: 1px; outline-offset: 1px; }
-
-  .activity-row {
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 18px;
-  }
-  .bars14 { gap: 6px; min-height: 70px; }
-  .bars14-labels { gap: 6px; }
-  .bar14-col { width: 14px; flex: 0 0 14px; }
-  .bar14-label { width: 14px; flex: 0 0 14px; font-size: 9px; }
-  .bar14-track.is-today { outline-width: 1px; }
-
-  .thinking {
-    font-size: 10px;
-    margin-top: 18px;
-    padding: 7px 0;
-    letter-spacing: 0;
-  }
-  .foot { font-size: 9px; margin-top: 5px; }
-}
