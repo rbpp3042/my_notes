@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Воркшоп: Harness Engineering</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #e8e8e8;
+      line-height: 1.7;
+      padding: 48px 24px;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .outcome {
+      font-size: 18px;
+      color: #a0a0a0;
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid #222;
+    }
+
+    .outcome strong {
+      color: #fff;
+    }
+
+    h2 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 24px;
+    }
+
+    section {
+      margin-bottom: 56px;
+    }
+
+    /* Нарратив */
+    .narrative-block {
+      margin-bottom: 32px;
+    }
+
+    .narrative-block .block-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .block-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: #444;
+      letter-spacing: 0.08em;
+      min-width: 20px;
+    }
+
+    .block-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #ccc;
+    }
+
+    .block-time {
+      font-size: 11px;
+      color: #444;
+      margin-left: auto;
+    }
+
+    .narrative-block p {
+      font-size: 15px;
+      color: #888;
+      padding-left: 32px;
+      border-left: 2px solid #1e1e1e;
+    }
+
+    .narrative-block p em {
+      color: #bbb;
+      font-style: normal;
+    }
+
+    /* Чеклист */
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+
+    .check-box {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid #333;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .check-content {
+      flex: 1;
+    }
+
+    .check-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #ddd;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .check-desc {
+      font-size: 13px;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    /* Повестка */
+    .agenda-list {
+      list-style: none;
+      counter-reset: agenda;
+    }
+
+    .agenda-list li {
+      counter-increment: agenda;
+      display: flex;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid #1a1a1a;
+      align-items: flex-start;
+    }
+
+    .agenda-list li:last-child {
+      border-bottom: none;
+    }
+
+    .agenda-list li::before {
+      content: counter(agenda);
+      font-size: 11px;
+      font-weight: 700;
+      color: #333;
+      background: #1a1a1a;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .agenda-list li span {
+      font-size: 15px;
+      color: #999;
+    }
+
+    .agenda-list li strong {
+      color: #ddd;
+      font-weight: 600;
+    }
+
+    /* Формат */
+    .format-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .format-card {
+      background: #141414;
+      border: 1px solid #1e1e1e;
+      border-radius: 8px;
+      padding: 16px 20px;
+    }
+
+    .format-card .label {
+      font-size: 11px;
+      color: #444;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .format-card .value {
+      font-size: 15px;
+      color: #ccc;
+      font-weight: 500;
+    }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #1a1a1a;
+      font-size: 12px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <span class="tag">Подготовка к воркшопу</span>
+    <h1>Harness Engineering<br>на практике</h1>
+    <p class="outcome">
+      <strong>Outcome:</strong> за 30 минут настроить репозиторий так, чтобы получить 80% выгоды от харнеса — и агент начал работать так, как нужно тебе.
+    </p>
+
+    <!-- Формат -->
+    <section>
+      <h2>Формат</h2>
+      <div class="format-grid">
+        <div class="format-card">
+          <div class="label">Длительность</div>
+          <div class="value">30 минут</div>
+        </div>
+        <div class="format-card">
+          <div class="label">Тип</div>
+          <div class="value">Live demo + чеклист</div>
+        </div>
+        <div class="format-card">
+          <div class="label">Участники</div>
+          <div class="value">Смотрят, забирают артефакт</div>
+        </div>
+        <div class="format-card">
+          <div class="label">Источник</div>
+          <div class="value">Методология OpenAI</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Нарратив -->
+    <section>
+      <h2>Нарратив</h2>
+
+      <div class="narrative-block">
+        <div class="block-header">
+          <span class="block-num">01</span>
+          <span class="block-title">Боль</span>
+          <span class="block-time">3 мин</span>
+        </div>
+        <p>
+          Вы давали задачу AI-агенту, он сделал что-то — но не то?
+          Переспросили — снова не так. Или хуже: сделал правильно один раз, потом перестал.<br><br>
+          <em>Это не баг агента. Это отсутствие харнеса.</em>
+        </p>
+      </div>
+
+      <div class="narrative-block">
+        <div class="block-header">
+          <span class="block-num">02</span>
+          <span class="block-title">Почему это происходит</span>
+          <span class="block-time">5 мин</span>
+        </div>
+        <p>
+          Агент без структуры — это джун без онбординга. Умный, способный — но не знает правил проекта,
+          что можно, что нельзя, как здесь принято. Каждый раз угадывает заново.<br><br>
+          OpenAI обнаружили это когда строили продукт с нулём вручную написанных строк кода.
+          <em>Вывод: чем больше агентов — тем больше нужна дисциплина. Не меньше.</em>
+        </p>
+      </div>
+
+      <div class="narrative-block">
+        <div class="block-header">
+          <span class="block-num">03</span>
+          <span class="block-title">Рецепт — демо вживую</span>
+          <span class="block-time">18 мин</span>
+        </div>
+        <p>
+          Они назвали это Harness Engineering. Идея простая: ты не пишешь код — ты проектируешь систему,
+          в которой агент не может ошибиться.<br><br>
+          <em>Пять элементов. Мы применили их в своём проекте. Показываю вживую.</em>
+        </p>
+      </div>
+
+      <div class="narrative-block">
+        <div class="block-header">
+          <span class="block-num">04</span>
+          <span class="block-title">Действие</span>
+          <span class="block-time">4 мин</span>
+        </div>
+        <p>
+          Вот чеклист. Первый шаг — <em>AGENTS.md</em>. Это 15 минут.
+          После этого агент уже работает иначе.
+        </p>
+      </div>
+    </section>
+
+    <!-- Чеклист -->
+    <section>
+      <h2>Чеклист: 80% харнеса</h2>
+      <ul class="checklist">
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-name">AGENTS.md</div>
+            <div class="check-desc">Контекст проекта, стек, команды, workflow. Агент читает это первым делом.</div>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-name">docs/exec-plans/template.md</div>
+            <div class="check-desc">Шаблон плана. Агент создаёт его перед каждой нетривиальной задачей.</div>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-name">docs/exec-plans/active/ + completed/</div>
+            <div class="check-desc">Папки для активных и завершённых планов. Агент знает где искать контекст.</div>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-name">docs/references/</div>
+            <div class="check-desc">Референсы, архитектурные решения, ADR. Агент не переизобретает колесо.</div>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-name">Makefile</div>
+            <div class="check-desc">fmt, lint, test, build. Петля обратной связи — агент проверяет себя после каждого изменения.</div>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-name">.claude/settings.json</div>
+            <div class="check-desc">Базовые permissions. Агент знает что ему разрешено делать автоматически.</div>
+          </div>
+        </li>
+        <li>
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-name">Harness linter + arch linter</div>
+            <div class="check-desc">Механический enforcement правил. Агент не может нарушить архитектурные границы — линтер не даст.</div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Повестка встречи -->
+    <section>
+      <h2>Повестка встречи по подготовке</h2>
+      <ul class="agenda-list">
+        <li><span><strong>Собрать демо-репо руками</strong> — пройти все шаги из чеклиста, зафиксировать каждый с обоснованием "зачем"</span></li>
+        <li><span><strong>Уточнить чеклист</strong> — что входит в 80%, что оставляем за скобками</span></li>
+        <li><span><strong>Проверить нарратив</strong> — пройтись по блокам, скорректировать формулировки</span></li>
+        <li><span><strong>Договориться о разделении</strong> — кто готовит что к воркшопу</span></li>
+      </ul>
+    </section>
+
+    <footer>
+      Harness Engineering — методология OpenAI, адаптированная на практике.
+    </footer>
+
+  </div>
+</body>
+</html>
