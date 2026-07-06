@@ -1,0 +1,177 @@
+---
+layout: post
+author: "Егор Колосов"
+title: "Идеи по развитию"
+date: 2026-07-06
+---
+
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Идеи по развитию</title>
+<style>
+  :root{
+    --bg:#f7f7f5; --card:#fff; --ink:#1a1a18; --muted:#6b6b66; --line:#e4e4df;
+    --accent:#2f6f4e; --accent-weak:#e8f2ec; --warn:#b4601a; --warn-weak:#f6ecdf;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#141513;--card:#1e201d;--ink:#ececea;--muted:#9a9a94;--line:#33352f;
+      --accent:#7fce9f;--accent-weak:#20301f;--warn:#e0a866;--warn-weak:#2c2416;}
+  }
+  :root[data-theme=light]{--bg:#f7f7f5;--card:#fff;--ink:#1a1a18;--muted:#6b6b66;--line:#e4e4df;--accent:#2f6f4e;--accent-weak:#e8f2ec;--warn:#b4601a;--warn-weak:#f6ecdf;}
+  :root[data-theme=dark]{--bg:#141513;--card:#1e201d;--ink:#ececea;--muted:#9a9a94;--line:#33352f;--accent:#7fce9f;--accent-weak:#20301f;--warn:#e0a866;--warn-weak:#2c2416;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;padding:34px 22px 48px}
+  h1{font-size:26px;line-height:1.2;margin:0 0 18px;letter-spacing:-.4px}
+  h2{font-size:16px;margin:30px 0 12px;letter-spacing:-.1px}
+  h3{font-size:18px;font-weight:700;margin:32px 0 12px;letter-spacing:-.2px;color:var(--ink);
+    padding-left:12px;border-left:3px solid var(--accent)}
+  p{margin:0 0 11px}
+  a{color:var(--accent)}
+  b,strong{font-weight:700}
+  hr{border:0;border-top:1px solid var(--line);margin:26px 0}
+
+  /* prominent intro — the key paragraph */
+  .intro{background:var(--accent-weak);border:1px solid var(--accent);border-radius:14px;
+    padding:18px 22px;margin:0 0 8px}
+  .intro p{font-size:17.5px;line-height:1.55;color:var(--ink);margin:0}
+  .intro p b{color:var(--accent)}
+
+  /* directions */
+  .dirs{display:grid;gap:12px;margin:6px 0 4px}
+  .dir{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+    display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start}
+  .dir .no{width:34px;height:34px;border-radius:9px;background:var(--accent-weak);color:var(--accent);
+    font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center}
+  .dir .h{font-weight:700;margin:2px 0 4px}
+  .dir p{margin:0;font-size:14.5px;line-height:1.55}
+  .dir .g{color:var(--muted);margin-top:6px}
+
+  /* stat tiles */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:4px 0 14px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .stat .n{font-size:27px;font-weight:800;color:var(--accent);letter-spacing:-.6px;
+    font-variant-numeric:tabular-nums}
+  .stat .l{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.35}
+
+  /* scenario trio */
+  .scn{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:4px 0 6px}
+  .sc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .sc.base{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+  .sc .t{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:6px}
+  .sc .v{font-size:22px;font-weight:800;letter-spacing:-.5px}
+
+  .grow{background:var(--warn-weak);border-left:3px solid var(--warn);border-radius:0 10px 10px 0;
+    padding:13px 16px;margin:8px 0}
+  .grow p{margin:0;font-size:14.5px;line-height:1.55}
+
+  .badge{display:inline-block;font-size:11px;padding:1px 8px;border-radius:20px;border:1px solid var(--line);
+    color:var(--muted);vertical-align:middle;font-weight:600;margin-left:6px}
+  .badge.m{color:var(--accent);border-color:var(--accent);background:var(--accent-weak)}
+  .badge.a{color:var(--warn);border-color:var(--warn);background:var(--warn-weak)}
+
+  .note{color:var(--muted);font-size:13px;margin:8px 0}
+
+  /* model inputs */
+  .io{margin:0 0 14px;padding:0 16px;list-style:none;background:var(--card);
+    border:1px solid var(--line);border-radius:12px}
+  .io li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;
+    border-bottom:1px solid var(--line);font-size:14px}
+  .io li:last-child{border-bottom:0}
+  .io .k{color:var(--muted)}
+  .io .v{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+  .cap{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:0 0 7px}
+
+  @media(max-width:600px){.stats,.scn{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Идеи по развитию</h1>
+
+  <div class="intro">
+    <p>У NVIDIA вышла новая модель — <b>LocateAnything-3B</b>, — которая повышает точность распознавания зубов и элементов лечения во рту. Она открывает новые идеи для развития и одновременно поднимает точность того, что уже работает. Важно, что это достигается <b>без дорогого обучения моделей и без покупки оборудования</b> — поэтому на её основе можно быстро разворачивать новые сервисы.</p>
+  </div>
+
+  <h2>Направления</h2>
+  <div class="dirs">
+
+    <div class="dir">
+      <div class="no">1</div>
+      <div>
+        <div class="h">До визита — привлечение пациентов</div>
+        <p>Человек присылает фото своих зубов и получает примерную оценку: что нужно сделать, сколько кап, сколько времени это займёт и порядок цены.</p>
+        <p class="g">Отдельный канал привлечения: человек, который только задумался о лечении, получает первый понятный ответ ещё до визита.</p>
+      </div>
+    </div>
+
+    <div class="dir">
+      <div class="no">2</div>
+      <div>
+        <div class="h">На приёме — разбор снимков<span class="badge m">уже работает</span></div>
+        <p>Программа автоматически разбирает снимки зубов и помогает врачу. Это направление уже работает — и здесь тоже есть куда развивать, особенно с новой моделью.</p>
+      </div>
+    </div>
+
+    <div class="dir">
+      <div class="no">3</div>
+      <div>
+        <div class="h">Между визитами — контроль без поездки в клинику</div>
+        <p>Пациент делает снимки сам: на телефон надевается простая недорогая насадка-расширитель, и он фотографирует зубы дома. Приложение сразу смотрит снимки и, если на них не видно как надо, просит переснять. Дальше даёт обратную связь — всё ли идёт по плану — и при необходимости подключает врача. За рубежом так уже работают, например сервис <a href="https://dentalmonitoring.com" target="_blank" rel="noopener">DentalMonitoring</a>.</p>
+        <p class="g">Гипотеза: так можно расширить рынок — привлекать пациентов из других регионов, которым не придётся часто ездить в клинику.</p>
+        <p class="g">Сервис можно обкатать на своей клинике, а затем выделить в самостоятельное приложение (SaaS) и развивать как отдельное направление — для других клиник, в том числе на других рынках.</p>
+      </div>
+    </div>
+
+    <div class="dir">
+      <div class="no">4</div>
+      <div>
+        <div class="h">После лечения — контроль результата</div>
+        <p>Возможно, после лечения тоже полезен контроль и напоминания, чтобы результат держался и пациент оставался с клиникой.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <h2>Экономическое моделирование гипотез</h2>
+  <p>Две гипотезы о том, какую пользу может дать удалённый контроль (направление 3), с прикидкой в деньгах.</p>
+
+  <h3>Гипотеза 1. Сокращение расходов на обслуживание</h3>
+  <p>Модель считает, сколько контрольных визитов можно перевести в удалённый формат и сколько на этом экономит клиника. Входные данные:</p>
+  <div class="cap">Входные данные модели</div>
+  <ul class="io">
+    <li><span class="k">Визитов в день (среднее из данных вебхука)</span><span class="v">118</span></li>
+    <li><span class="k">Контрольных визитов в год у пациента</span><span class="v">7–9</span></li>
+    <li><span class="k">Можно перевести в удалённый формат</span><span class="v">около трети</span></li>
+    <li><span class="k">Стоимость одного визита</span><span class="v">≈ 3 500 ₽</span></li>
+  </ul>
+  <p>Экономия на высвобождаемых слотах за год:</p>
+  <div class="scn">
+    <div class="sc"><div class="t">Осторожно</div><div class="v">6,5 млн ₽</div></div>
+    <div class="sc base"><div class="t">Ожидаемо</div><div class="v">24,5 млн ₽</div></div>
+    <div class="sc"><div class="t">Оптимистично</div><div class="v">67 млн ₽</div></div>
+  </div>
+
+  <h3>Гипотеза 2. Рост охвата за счёт регионов</h3>
+  <p>Идея: когда пациенту нужно реже приезжать, в клинику могут прийти те, кто раньше вообще бы не поехал. Мало кто согласится целый год ездить в другой регион; а если ездить нужно меньше, попасть в сильную клинику с хорошим лечением становится реально — и такие пациенты появляются.</p>
+  <div class="cap">Как считаем</div>
+  <ul class="io">
+    <li><span class="k">Один кейс лечения элайнерами</span><span class="v">250–400 тыс ₽</span></li>
+    <li><span class="k">Новых региональных кейсов в год</span><span class="v">+30</span></li>
+    <li><span class="k">Дополнительная выручка</span><span class="v">+7,5–12 млн ₽</span></li>
+  </ul>
+
+  <h3>Гипотеза 3. Доверие и репутация</h3>
+  <p>Цифровые инструменты и быстрая обратная связь, которую пациент получает между визитами, повышают доверие и воспринимаемое качество сервиса. Это благотворно сказывается на репутации клиники и повышает готовность пациентов рекомендовать лечение знакомым.</p>
+  <p class="note">Эффект сложно посчитать в деньгах напрямую, но он работает на поток новых пациентов.</p>
+
+</div>
+</body>
+</html>
