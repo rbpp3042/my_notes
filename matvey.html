@@ -146,6 +146,40 @@
   .fine{ font-size: 14px; color: var(--ink-soft); margin: 0; text-align: center; }
   .fine b{ color: var(--ink); font-weight: 600; }
 
+  /* ---- Выбор способа перевода ---- */
+  .paydlg{
+    border: 1px solid var(--line); border-radius: 16px;
+    padding: 22px 22px 18px; max-width: 390px; width: calc(100% - 32px);
+    background: var(--bg-raised); color: var(--ink);
+    box-shadow: 0 24px 60px -24px rgba(38,36,31,0.5);
+  }
+  .paydlg::backdrop{ background: rgba(38,36,31,0.45); }
+  .paydlg h2{
+    font-family: 'Zilla Slab', ui-serif, Georgia, serif;
+    font-size: 20px; font-weight: 700; margin: 0 0 3px;
+  }
+  .paydlg .hint{ margin: 0 0 16px; font-size: 13.5px; color: var(--ink-soft); }
+  .payopt{
+    display: block; text-decoration: none;
+    padding: 13px 16px; margin-bottom: 10px;
+    border: 1px solid var(--line); border-radius: 12px;
+    background: var(--bg);
+    font-weight: 700; font-size: 15px;
+    transition: border-color 140ms ease;
+  }
+  .payopt span{
+    display: block; margin-top: 2px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-weight: 400; font-size: 11.5px; color: var(--ink-soft);
+  }
+  .payopt:hover, .payopt:focus-visible{ border-color: var(--teal); outline: none; }
+  .payclose{
+    display: block; width: 100%; margin-top: 4px; padding: 9px;
+    background: none; border: 0; cursor: pointer;
+    font-family: inherit; font-size: 13.5px; color: var(--ink-soft);
+  }
+  .payclose:hover{ color: var(--ink); }
+
   @media (max-width: 620px){
     .status-inner{ padding: 10px 16px 12px; }
     .raised .sum{ font-size: 19px; }
@@ -181,7 +215,7 @@
         <span class="of" id="of">из $900</span>
       </div>
       <span class="pct" id="pct">18%</span>
-      <a class="btn" href="https://egreve.bog.ge/Matvey_birthday" target="_blank" rel="noopener">Подарить</a>
+      <a class="btn js-pay" href="https://egreve.bog.ge/Matvey_birthday" target="_blank" rel="noopener">Подарить</a>
     </div>
     <div class="bar"><div class="fill" id="fill"></div></div>
   </div>
@@ -211,19 +245,36 @@
     <div class="plan-head">Наш план: 5 дней незабываемых впечатлений</div>
     <ol class="days">
       <li><span class="row">Вечер на Ниле <span class="note">· ужин на теплоходе</span></span></li>
-      <li><span class="row">Пирамиды Гизы и Сфинкс <span class="note">· с верблюдом</span></span></li>
-      <li><span class="row">Grand Egyptian Museum <span class="note">· самый новый музей Египта</span></span></li>
+      <li><span class="row">Пирамиды Гизы и Сфинкс <span class="note">· последнее чудо света</span></span></li>
+      <li><span class="row">Grand Egyptian Museum <span class="note">· мумии и саркофаги</span></span></li>
       <li><span class="row">Сокровища Тутанхамона <span class="note">· та самая золотая маска</span></span></li>
       <li><span class="row">Старый Каир <span class="note">· цитадель и рынок Хан-эль-Халили</span></span></li>
     </ol>
   </div>
 
   <div class="cta">
-    <a class="btn btn-lg" href="https://egreve.bog.ge/Matvey_birthday" target="_blank" rel="noopener">Подарить кусочек поездки</a>
+    <a class="btn btn-lg js-pay" href="https://egreve.bog.ge/Matvey_birthday" target="_blank" rel="noopener">Подарить кусочек поездки</a>
     <p class="fine"><b>Сумма любая</b></p>
   </div>
 
 </div>
+
+<dialog class="paydlg" id="pay" aria-labelledby="paytitle">
+  <h2 id="paytitle">Откуда переводите?</h2>
+  <p class="hint">Выберите тот банк, которым вам удобнее.</p>
+
+  <a class="payopt" href="https://egreve.bog.ge/Matvey_birthday" target="_blank" rel="noopener">
+    Карта Банка Грузии
+    <span>egreve.bog.ge · лари</span>
+  </a>
+
+  <a class="payopt" href="https://c2c.cbrpay.ru/BS1I0040KFFQ4T2I9QAAB60180S292FS" target="_blank" rel="noopener">
+    Карта российского банка
+    <span>c2c.cbrpay.ru · рубли</span>
+  </a>
+
+  <button class="payclose" id="payclose" type="button">Закрыть</button>
+</dialog>
 
 <script>
   const RAISED = 150;   // обновлять здесь
@@ -239,6 +290,17 @@
   requestAnimationFrame(() => {
     document.getElementById('fill').style.width = Math.max(pct, 2).toFixed(1) + '%';
   });
+
+  // Обе кнопки открывают выбор банка. Если <dialog> не поддерживается,
+  // ссылка срабатывает как обычно и ведёт в Банк Грузии.
+  const dlg = document.getElementById('pay');
+  if (typeof dlg.showModal === 'function') {
+    document.querySelectorAll('.js-pay').forEach(el => {
+      el.addEventListener('click', e => { e.preventDefault(); dlg.showModal(); });
+    });
+    document.getElementById('payclose').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  }
 </script>
 </body>
 </html>
