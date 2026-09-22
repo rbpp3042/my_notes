@@ -167,12 +167,12 @@
     font-weight: 700; font-size: 15px;
     transition: border-color 140ms ease;
   }
-  .payopt span{
-    display: block; margin-top: 2px;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-weight: 400; font-size: 11.5px; color: var(--ink-soft);
-  }
   .payopt:hover, .payopt:focus-visible{ border-color: var(--teal); outline: none; }
+  .paynote{
+    margin: 14px 0 6px; font-size: 13px; line-height: 1.45;
+    color: var(--ink-soft);
+  }
+  .paynote b{ color: var(--ink); font-weight: 700; }
   .payclose{
     display: block; width: 100%; margin-top: 4px; padding: 9px;
     background: none; border: 0; cursor: pointer;
@@ -263,15 +263,11 @@
   <h2 id="paytitle">Откуда переводите?</h2>
   <p class="hint">Выберите тот банк, которым вам удобнее.</p>
 
-  <a class="payopt" href="https://egreve.bog.ge/Matvey_birthday" target="_blank" rel="noopener">
-    Карта Банка Грузии
-    <span>egreve.bog.ge · лари</span>
-  </a>
+  <a class="payopt" href="https://egreve.bog.ge/Matvey_birthday" target="_blank" rel="noopener">Карта Банка Грузии</a>
 
-  <a class="payopt" href="https://c2c.cbrpay.ru/BS1I0040KFFQ4T2I9QAAB60180S292FS" target="_blank" rel="noopener">
-    Карта российского банка
-    <span>c2c.cbrpay.ru · рубли</span>
-  </a>
+  <a class="payopt" href="https://c2c.cbrpay.ru/BS1I0040KFFQ4T2I9QAAB60180S292FS" target="_blank" rel="noopener">Карта российского банка</a>
+
+  <p class="paynote">В комментарии к переводу напишите <b>«Подарок»</b> — так мы поймём, от кого он.</p>
 
   <button class="payclose" id="payclose" type="button">Закрыть</button>
 </dialog>
