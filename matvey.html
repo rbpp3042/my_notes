@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Матвей едет к пирамидам</title>
+<meta property="og:title" content="Путешествие к египетским фараонам в ноябре">
+<meta property="og:description" content="Матвей увлекается историей. Вместо подарка на день рождения — поучаствовать в поездке к пирамидам.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Karla:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Страница намеренно всегда светлая — тёмной темы нет. */
+  :root{
+    color-scheme: light;
+    --bg: #EFEAE0;
+    --bg-raised: #FBF9F3;
+    --ink: #26241F;
+    --ink-soft: #5B564A;
+    --line: rgba(38,36,31,0.14);
+    --teal: #1F5F63;
+    --teal-ink: #FBF9F3;
+    --gold: #A9781F;
+    --bar-track: rgba(38,36,31,0.12);
+    --img-sky: #DEE7E4;
+    --img-sand: #E5DAC3;
+    --img-shade: rgba(0,0,0,0.15);
+    --shadow: 0 1px 2px rgba(38,36,31,0.06), 0 10px 28px -20px rgba(38,36,31,0.4);
+  }
+
+  *{ box-sizing: border-box; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Karla', ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: inherit; }
+
+  /* ---- Липкая шапка со сбором ---- */
+  .status{
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg-raised);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+  .status-inner{ max-width: 760px; margin: 0 auto; padding: 11px 22px 13px; }
+  .status-top{ display: flex; align-items: center; gap: 12px; }
+  .raised{ display: flex; align-items: baseline; gap: 7px; min-width: 0; }
+  .raised .sum{
+    font-family: 'Zilla Slab', ui-serif, Georgia, serif;
+    font-weight: 700; font-size: 21px; font-variant-numeric: tabular-nums;
+  }
+  .raised .of{ color: var(--ink-soft); font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .pct{
+    margin-left: auto;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 13px; font-variant-numeric: tabular-nums;
+    color: var(--teal);
+  }
+  .bar{
+    margin-top: 9px;
+    height: 11px; border-radius: 999px;
+    background: var(--bar-track);
+    overflow: hidden;
+  }
+  .fill{
+    height: 100%; width: 0; border-radius: 999px;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    transition: width 950ms cubic-bezier(.22,.8,.3,1);
+  }
+
+  .btn{
+    display: inline-block; text-decoration: none;
+    background: var(--teal); color: var(--teal-ink);
+    font-weight: 700; font-size: 14.5px;
+    padding: 8px 20px; border-radius: 999px;
+    white-space: nowrap;
+    transition: transform 140ms ease, opacity 140ms ease;
+  }
+  .btn:hover{ transform: translateY(-1px); opacity: 0.92; }
+  .btn:focus-visible{ outline: 2px solid var(--gold); outline-offset: 3px; }
+  .status .btn{ align-self: center; padding: 7px 17px; font-size: 14px; }
+  .btn-lg{ font-size: 16.5px; padding: 14px 32px; }
+
+  /* ---- Страница ---- */
+  .wrap{ max-width: 760px; margin: 0 auto; padding: 20px 22px 28px; }
+
+  h1{
+    font-family: 'Zilla Slab', ui-serif, Georgia, serif;
+    font-size: 31px; font-weight: 700; line-height: 1.12;
+    letter-spacing: -0.01em; text-wrap: balance; margin: 0;
+  }
+  .idea{ margin: 11px 0 0; font-size: 16px; color: var(--ink-soft); max-width: 62ch; }
+  .idea b{ color: var(--ink); font-weight: 600; }
+
+  /* ---- Две иллюстрации ---- */
+  .shots{ margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .shot{
+    border: 1px solid var(--line); border-radius: 12px;
+    background: var(--bg-raised); overflow: hidden;
+  }
+  .shot svg{ display: block; width: 100%; height: 84px; }
+  .shot figcaption{
+    padding: 7px 12px 8px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    overflow-wrap: anywhere;
+  }
+
+  /* ---- План ---- */
+  .plan{
+    margin-top: 14px;
+    border: 1px solid var(--line); border-radius: 12px;
+    background: var(--bg-raised); overflow: hidden;
+  }
+  .plan-head{
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 9px 18px 8px; border-bottom: 1px solid var(--line);
+  }
+  ol.days{ margin: 0; padding: 4px 0 6px; list-style: none; counter-reset: d; }
+  ol.days li{
+    counter-increment: d;
+    display: flex; gap: 11px;
+    padding: 4px 18px; font-size: 14.5px;
+  }
+  ol.days li::before{
+    content: counter(d);
+    flex: none; width: 15px;
+    font-family: 'Zilla Slab', ui-serif, Georgia, serif;
+    font-weight: 700; font-size: 13px; color: var(--teal);
+    font-variant-numeric: tabular-nums; line-height: 1.55;
+  }
+  ol.days .row{ flex: 1; min-width: 0; }
+  ol.days .note{ color: var(--ink-soft); }
+
+  /* ---- Кнопка ---- */
+  .cta{
+    margin-top: 22px;
+    display: flex; flex-direction: column; align-items: center; gap: 11px;
+  }
+  .fine{ font-size: 14px; color: var(--ink-soft); margin: 0; text-align: center; }
+  .fine b{ color: var(--ink); font-weight: 600; }
+
+  @media (max-width: 620px){
+    .status-inner{ padding: 10px 16px 12px; }
+    .raised .sum{ font-size: 19px; }
+    .status .btn{ padding: 7px 15px; font-size: 13.5px; }
+    .pct{ font-size: 12px; }
+    .wrap{ padding: 18px 16px 30px; }
+    h1{ font-size: 26px; }
+    .idea{ font-size: 15.5px; }
+    .shots{ gap: 10px; }
+    .shot svg{ height: 74px; }
+    .shot figcaption{
+      padding: 6px 10px 7px; font-size: 8.5px; letter-spacing: 0.02em;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    ol.days li{ padding: 5px 16px; font-size: 14px; }
+    .cta .btn-lg{ width: 100%; text-align: center; padding: 15px 20px; }
+  }
+  @media (max-width: 380px){
+    .raised .of{ display: none; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .fill{ transition: none; }
+    .btn{ transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="status">
+  <div class="status-inner">
+    <div class="status-top">
+      <div class="raised">
+        <span class="sum" id="sum">$150</span>
+        <span class="of" id="of">из $840</span>
+      </div>
+      <span class="pct" id="pct">18%</span>
+      <a class="btn" href="https://egreve.bog.ge/Matvey_birthday" target="_blank" rel="noopener">Подарить</a>
+    </div>
+    <div class="bar"><div class="fill" id="fill"></div></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <h1>Путешествие к египетским фараонам в ноябре</h1>
+
+  <p class="idea">Матвей увлекается историей, и мы хотим подарить ему путешествие, которое он запомнит, — чтобы поддержать это увлечение. <b>Предлагаем вам в качестве подарка на день рождения поучаствовать в этой поездке.</b></p>
+
+  <div class="shots">
+
+    <figure class="shot">
+      <svg viewBox="0 0 360 140" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Пирамиды Гизы на закате">
+        <rect x="0" y="0" width="360" height="140" fill="var(--img-sky)"/>
+        <circle cx="298" cy="40" r="17" fill="var(--gold)"/>
+        <polygon points="96,70 141,112 51,112" fill="var(--teal)"/>
+        <polygon points="96,70 141,112 96,112" fill="var(--img-shade)"/>
+        <polygon points="258,58 312,112 204,112" fill="var(--teal)"/>
+        <polygon points="258,58 312,112 258,112" fill="var(--img-shade)"/>
+        <polygon points="180,26 252,112 108,112" fill="var(--teal)"/>
+        <polygon points="180,26 252,112 180,112" fill="var(--img-shade)"/>
+        <rect x="0" y="112" width="360" height="28" fill="var(--img-sand)"/>
+      </svg>
+      <figcaption>Пирамиды Гизы</figcaption>
+    </figure>
+
+    <figure class="shot">
+      <svg viewBox="0 0 360 140" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Grand Egyptian Museum, треугольный фасад">
+        <rect x="0" y="0" width="360" height="140" fill="var(--img-sky)"/>
+        <circle cx="62" cy="38" r="13" fill="var(--gold)"/>
+        <polygon points="36,112 36,74 196,34 324,72 324,112" fill="var(--teal)"/>
+        <polygon points="196,34 324,72 324,112 196,112" fill="var(--img-shade)"/>
+        <polygon points="82,104 100,76 118,104" fill="var(--img-sky)" opacity="0.5"/>
+        <polygon points="126,104 144,70 162,104" fill="var(--img-sky)" opacity="0.5"/>
+        <polygon points="170,104 188,64 206,104" fill="var(--img-sky)" opacity="0.5"/>
+        <polygon points="214,104 232,72 250,104" fill="var(--img-sky)" opacity="0.5"/>
+        <polygon points="258,104 276,80 294,104" fill="var(--img-sky)" opacity="0.5"/>
+        <polygon points="164,112 180,88 196,112" fill="var(--gold)"/>
+        <rect x="0" y="112" width="360" height="28" fill="var(--img-sand)"/>
+      </svg>
+      <figcaption>Grand Egyptian Museum</figcaption>
+    </figure>
+
+  </div>
+
+  <div class="plan">
+    <div class="plan-head">Наш план: 5 дней незабываемых впечатлений</div>
+    <ol class="days">
+      <li><span class="row">Вечер на Ниле <span class="note">· ужин на теплоходе</span></span></li>
+      <li><span class="row">Пирамиды Гизы и Сфинкс <span class="note">· с верблюдом</span></span></li>
+      <li><span class="row">Grand Egyptian Museum <span class="note">· самый новый музей Египта</span></span></li>
+      <li><span class="row">Сокровища Тутанхамона <span class="note">· та самая золотая маска</span></span></li>
+      <li><span class="row">Старый Каир <span class="note">· цитадель и рынок Хан-эль-Халили</span></span></li>
+    </ol>
+  </div>
+
+  <div class="cta">
+    <a class="btn btn-lg" href="https://egreve.bog.ge/Matvey_birthday" target="_blank" rel="noopener">Подарить кусочек поездки</a>
+    <p class="fine"><b>Сумма любая</b></p>
+  </div>
+
+</div>
+
+<script>
+  const RAISED = 150;   // обновлять здесь
+  const GOAL   = 840;
+
+  const pct = GOAL > 0 ? Math.min(100, (RAISED / GOAL) * 100) : 0;
+  const fmt = n => '$' + n.toLocaleString('en-US');
+
+  document.getElementById('sum').textContent = fmt(RAISED);
+  document.getElementById('of').textContent  = 'из ' + fmt(GOAL);
+  document.getElementById('pct').textContent = Math.round(pct) + '%';
+
+  requestAnimationFrame(() => {
+    document.getElementById('fill').style.width = Math.max(pct, 2).toFixed(1) + '%';
+  });
+</script>
+</body>
+</html>
