@@ -196,7 +196,12 @@
     .cta .btn-lg{ width: 100%; text-align: center; padding: 15px 20px; }
   }
   @media (max-width: 380px){
-    .raised .of{ display: none; }
+    /* Цель важнее процента: он дублирует полоску, поэтому на узком экране прячем его. */
+    .raised{ gap: 5px; }
+    .raised .sum{ font-size: 18px; }
+    .raised .of{ font-size: 13px; }
+    .pct{ display: none; }
+    .status .btn{ padding: 7px 13px; font-size: 13px; }
   }
   @media (prefers-reduced-motion: reduce){
     .fill{ transition: none; }
